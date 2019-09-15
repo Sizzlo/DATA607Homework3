@@ -4,11 +4,14 @@ author: "Tony Mei"
 date: "9/10/2019"
 output: html_document
 ---
+3.Copy the introductory example. The vector name stores the extracted names.
+
 ```{r}
 library(stringr)
 raw.data <-"555-1239Moe Szyslak(636) 555-0113Burns, C. Montgomery555-6542Rev. Timothy Lovejoy555 8904Ned Flanders636-555-3226Simpson, Homer5553642Dr. Julius Hibbert"
 name <- unlist(str_extract_all(raw.data, "[[:alpha:]., ]{2,}"))
 ```
+1. Use the tools of this chapter to rearrange the vector so that the element conform to the standard first_name last_name.
 
 ```{r}
 FL_names <- str_trim(sub("\\s\\w\\.|\\S\\w+\\.\\s","", name))
@@ -19,13 +22,15 @@ FL_names1
 ```
 
 2. Construct a logical vector indicating whether a character has a title(ie., Rev. and Dr.)
+
 ```{r}
 titled_name<-str_detect(name, "Rev.|Dr.")
 titled_name
 cbind(name, titled_name)
 ```
 
-3.
+3.Construct a logical vector indicating whether a character has a second name.
+
 ```{r}
 second_name <- str_detect(name, "[A-Z]\\.{1}")
 second_name
@@ -33,7 +38,7 @@ cbind(name, second_name)
 ```
 
 
-4.
+4. Describe the types of strings that conform to the following regular expressions and construct an example that is matched by the regular expression.
 a) 
 [0-9]+\\$
 ```{r}
